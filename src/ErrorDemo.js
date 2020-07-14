@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Axios from "axios";
-import Loader from "./Loaderr";
+import Loader from "./Loader";
+
 const ErrorDemo = (props) => {
   const [email, setEmail] = useState("eve.holt@reqres.in");
   const [password, setPassword] = useState("cityslicka");
@@ -11,6 +12,7 @@ const ErrorDemo = (props) => {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
     setLoading(true);
     try {
       let res = await Axios.post("https://reqres.in/api/login", {
@@ -39,10 +41,8 @@ const ErrorDemo = (props) => {
       setLoading(false);
     }
   }
-
   if (token) return <h1>logged in</h1>;
   if (loading) return <Loader loading={true} />;
-
   return (
     <div>
       <h1>Error Demo</h1>
@@ -59,4 +59,5 @@ const ErrorDemo = (props) => {
     </div>
   );
 };
+
 export default ErrorDemo;
